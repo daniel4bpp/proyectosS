@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="css/asd.css">
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/iconoblackjack.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/iconoblackjack.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://suspirabansus.github.io/blackjack/" >
+    <script src="https://kit.fontawesome.com/148afdfd8d.js" crossorigin="anonymous"></script>
+
+    <style>/* Estilos generales */
+        html, body {
+            height: 100%;
+        }
+        /* Modificar el modelo de cajas de CSS */
+        
+        html {
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box
+        }
+        *, *:before, *::after {
+            -webkit-box-sizing: inherit;
+                    box-sizing: inherit
+        }
+        
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "Open Sans", sans-serif;
+        }
+        
+        a {
+            padding: 12px 10em;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1366px;
+            margin: 0 auto;
+        }
+        /* Estilos de los contenidos */
+        /* Estilos de header */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+        }
+        header {
+            background-color: green;
+            
+        }
+        #logo {
+            float: left;
+        }
+        #infoContacto {
+            float: right;
+            margin-top: 22px;
+        }
+        #infoContacto i {
+            color: #fff;
+            margin-right: 12px;
+            font-size: 1.20rem;
+        }
+        /* Seccion 1 */
+        article > section:nth-child(1) {
+            background-image: -webkit-gradient(linear, right bottom, left top, from(rgba(75, 156, 143, 0.664)), to(rgba(113, 45, 158, 0.83))), url();
+            background-image: -o-linear-gradient(right bottom, rgba(72, 68, 124, 0.83), rgba(81, 93, 199, 0.83)), url(../images/casino4.jpg);
+            background-image: linear-gradient(to left top, rgba(162, 37, 187, 0.83), rgba(202, 30, 30, 0.83)), url(../images/casino4.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center right;
+        }
+        #intro {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            padding: 50px 0;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: row wrap;
+                    flex-flow: row wrap;
+            height: 100%;
+            min-height: 600px;
+        }
+        #descripcion {
+            -ms-flex-preferred-size: 60%;
+                flex-basis: 60%;
+            padding: 0 1em 0 0;
+            -webkit-box-flex: 2;
+                -ms-flex-positive: 2;
+                    flex-grow: 2;
+            color: #fff;
+        }
+        h1 {
+            font-size: 2.60rem;
+            font-family: arial,tahoma,verdana,sans-serif;
+            margin-bottom: 25px;
+        }
+        #descripcion p {
+            margin-bottom: 33px;
+            line-height: 1.65;
+        }
+        #descripcion i {
+            font-size: 0.9rem;
+            border: 1px solid;
+            border-radius: 50%;
+            padding: 5px;
+            background-color: #fff;
+            color: #008000;
+        }
+        #formulario {
+            -ms-flex-preferred-size: 30%;
+                flex-basis: 30%;
+        }
+        #formulario {
+            -ms-flex-preferred-size: 30%;
+                flex-basis: 30%;
+            background-color: rgba(0,0,0,0.8);
+            padding: 20px 1em;
+            color: #fff;
+        }
+        #formulario h2 {
+            font-size: 1.40rem;
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 0.90rem;
+        }
+        input[type="text"], input[type="email"] {
+            display: inline-block;
+            width: 100%;
+            height: 45px;
+            padding: 0 1rem;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            display: inline-block;
+            border: none;
+            background-color: #008000;
+            color: #fff;
+            width: 100%;
+            padding: 10px 1em;
+            margin: 25px auto;
+            font-size: 1rem;
+        }
+        small a {
+            color: blue;
+        }
+        /* section 2 */
+        article > section:nth-child(2) {
+            padding: 60px 0;
+        }
+        #seccionDos {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: row wrap;
+                    flex-flow: row wrap;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            text-align: center;
+        }
+        #seccionDos i {
+            color: #c04597;
+        font-size: 3.0rem;
+        border: 1px solid;
+        border-radius: 100%;
+        padding: 94px 0;
+        width: 240px;
+        height: 240px;
+        margin-bottom: 35px;
+        }
+        .col h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #9945c0;
+        }
+        /* seccion 3 */
+        article > section:nth-child(3) {
+            background-color: #648dbe;
+            padding: 40px 0;
+            background-image: url(images/casino3.png);
+        }
+        #seccionTres {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: row wrap;
+                    flex-flow: row wrap;
+        }
+        #seccionTres div {
+            -ms-flex-preferred-size: 60%;
+                flex-basis: 60%;
+            padding-right: 1.9em;
+            color: #fff;
+        }
+        
+        video::-webkit-media-controls {
+            display: none;
+        }
+        video {
+            max-width: 100%;
+            min-width: 10%;
+        }
+        video {
+            -ms-flex-preferred-size: 40%;
+                flex-basis: 40%;
+        
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #seccionTres a {
+            background-image: url(images/mar.jpg);
+            display: inline-block;
+            background-color: #008000;
+            color: #fff;
+            padding: 12px 10em;
+            text-decoration: none;
+            margin: 20px 0;
+            
+        }
+        /* seccion 4 */
+        article > section:nth-child(4) {
+            padding: 60px 0 0;
+            text-align: center;
+        }
+        #seccionCuatro {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            margin: 50px auto;
+        }
+        .card {
+            margin: 20px 0.5em;
+            -webkit-box-shadow: 2px 5px 15px #ccc9c9;
+                    box-shadow: 2px 5px 15px #ccc9c9;
+            padding-bottom: 50px;
+        }
+        .card img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .card p {
+            font-size: 0.9rem;
+            padding: 12px 2em;
+        }
+        .card i {
+            font-size: 1.5rem;
+            color: #107ba7;
+            margin: 0 0.2em;
+        }
+        /* seccion 5*/
+        article > section:nth-child(5) {
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center right;
+        }
+        #seccionCinco {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-flow: column wrap;
+                    flex-flow: column wrap;
+            height: 100%;
+            min-height: 300px;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          color: #000000;
+        }
+        #seccionCinco h2 {
+            margin-bottom: 0;
+        }
+        #seccionCinco p {
+            padding: 20px 0;
+        }
+        #seccionCinco a {
+            display: block;
+            background-color: #37b81e;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 2em;
+        }
+        #seccionCinco a:hover {
+            background-color: #358d24;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+        /* pie de pagina */
+        footer {
+            background-color: #2c2a2a;
+            padding: 20px 0;
+        }
+        #pie\ de\ pagina {
+            overflow: hidden;
+        }
+        
+        .nav {
+            float: left;
+        }
+        .nav li {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 12px 0 0;
+        }
+        .nav li a {
+            color: #c0bcbc;
+            text-decoration: none;
+            padding-right: 1.5em;
+        }
+        .copyright {
+            float: right;
+            color: #c0bcbc;
+            padding-top: 5px;
+        }
+        .nav li a:hover {
+            text-decoration: underline;
+        }
+        /* Media queries */
+        @media screen and (max-width:3840px) {
+            .container {
+                width: 91%;
+                max-width: 3840px;
+            }
+        }
+        /* Media queries */
+        @media screen and (max-width:1920px) {
+            .container {
+                max-width: 1920px;
+            }
+        }
+        /* Aplicar los siguientes es tilos cuando el tamaño del viewport se encuentre en un rango de 960px - 1199px */
+        @media screen and (min-width:960px) and (max-width:1199px) {
+            .col h3 {
+                font-size: 1.05rem;
+            }
+            h2 {
+                
+                font-size: 1.43rem;
+            }
+        }
+        /* Aplicar los siguientes es tilos cuando el tamaño del viewport se encuentre en un rango de 660px - 959px */
+        @media screen and (min-width:660px) and (max-width:959px) {
+            #intro {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-flow: column wrap;
+                        flex-flow: column wrap;
+            }
+            h1 {
+                font-size: 3.3rem;
+            }
+            #descripcion {
+                -ms-flex-preferred-size: 100%;
+                    flex-basis: 100%;
+                padding: 0 0 0 0;
+            }
+            article > section:nth-child(2) {
+                padding: 20px 0;
+            }
+            #seccionDos {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-flow: column wrap;
+                        flex-flow: column wrap;
+            }
+            .col {
+                padding: 30px;
+            }
+            #seccionTres {
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                    -ms-flex-flow: column wrap;
+                        flex-flow: column wrap;
+            }
+            #seccionTres div {
+                -ms-flex-preferred-size: 100%;
+                    flex-basis: 100%;
+                padding-right: 0;
+            }
+            #seccionTres a {
+                padding: 12px 0;
+                width: 100%;
+                text-align: center;
+            }
+            video {
+                -ms-flex-preferred-size: 100%;
+                    flex-basis: 100%;
+                width: 100%;
+            }
+            article > section:nth-child(4) {
+                padding: 30px 0 0;
+            }
+            #seccionCinco {
+                text-align: center;
+            }
+        }
+        @media screen and (max-width: 659 ) {
+            #logo, #infoContacto {
+                width: 100%;
+                text-align: center;
+                margin: 5px auto;
+            }
+            #pieDePagina {
+                text-align: center;
+            }
+            .nav {
+                float: none;
+            }
+            .nav li {
+                display: block;
+                margin: 20px 0;
+            }
+            .copyright {
+                float: none;
+                border-top: 1px solid #3e3e3e;
+                margin-top: 30px;
+            }
+        }</style>
+
+
+</head>
+
+<body>
+    <video id="video-background" autoplay muted loop>
+        <source src="images/fondocasino.mp4">
+    </video>
+
+    
+    <!-- Cabecera -->
+    <header>
+        <div class="container">
+            <div id="logo">
+                <a href="index.html"> <img src="images/logoblackjack.png" alt="logotipo"></a>
+            </div>
+            <div id="infoContacto">
+                <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <i class="fa-solid fa-phone"> 1-234-567-8910</i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <section>
+                <div id="intro" class="container">
+                    <div id="descripcion">
+                        <h1>¡Bienvenido a la emocionante experiencia del Blackjack!</h1>
+                        <p> <i class="fas fa-check"></i> El Blackjack, también conocido como 21, es uno de los juegos de
+                            cartas más populares en los casinos de todo el mundo. Combina estrategia, habilidad y un
+                            poco de suerte para ofrecer una experiencia de juego emocionante y cautivadora.</p>
+                        <h1>¿Cómo se juega?</h1>
+
+
+                        <p> <i class="fas fa-check"></i> El objetivo del juego es simple: obtener una mano con un valor
+                            lo más cercano posible a 21 sin pasarse. Cada carta numérica tiene su valor nominal, las
+                            cartas de figura (J, Q, K) valen 10 puntos, y el As puede valer 1 u 11 puntos, dependiendo
+                            de lo que sea más conveniente para el jugador.</p>
+                        <h1>El Desarrollo del Juego</h1>
+                        <p> <i class="fas fa-check"></i>Apuestas: Los jugadores realizan sus apuestas antes de que se repartan las cartas.</p>
+
+                        <h1>Reparto de Cartas:</h1>
+                        <p><i class="fas fa-check"></i> El crupier reparte dos cartas a cada jugador, incluyéndose a sí
+                            mismo. Una de las cartas del crupier se muestra boca arriba y la otra boca abajo.</p>
+
+                        <h1>Jugada del Jugador:</h1>
+                        <p><i class="fas fa-check"></i> Los jugadores toman decisiones basadas en las cartas que tienen
+                            y en la carta visible del crupier. Pueden optar por "Pedir" una carta adicional, "Plantarse"
+                            con las cartas que tienen, "Dividir" si tienen dos cartas del mismo valor, o "Doblar" su
+                            apuesta original y recibir solo una carta adicional.</p>
+
+                        <h1>Jugada del Crupier:</h1>
+                        <p><i class="fas fa-check"></i>Una vez que todos los jugadores han tomado sus decisiones, el
+                            crupier revela su carta boca abajo y juega su mano de acuerdo con las reglas establecidas.
+                            Por lo general, el crupier debe pedir cartas adicionales hasta alcanzar un total de al menos
+                            17 puntos.</p>
+
+                        <h1>Determinación de Ganadores:</h1>
+                        <p><i class="fas fa-check"></i>Se comparan las manos de los jugadores con la del crupier. Los
+                            jugadores que tengan una mano más cercana a 21 que la del crupier y sin pasarse, ganan.
+                            Aquellos que superen 21 puntos pierden automáticamente, y en caso de empate, se devuelve la
+                            apuesta.</p>
+
+                        <h1>Estrategia y Habilidades</h1>
+                        <p><i class="fas fa-check"></i>Aunque el Blackjack es en parte un juego de azar, también
+                            requiere habilidad y estrategia para maximizar las posibilidades de ganar. Los jugadores
+                            pueden aprender estrategias básicas para saber cuándo pedir, plantarse, dividir o doblar,
+                            según las cartas en su mano y la carta visible del crupier.</p>
+
+                        <h1>¡Únete a la emoción del Blackjack hoy mismo!</h1>
+                        <p><i class="fas fa-check"></i>Ya sea que seas un principiante o un jugador experimentado, el
+                            Blackjack ofrece diversión y emoción para todos. ¡Únete a la mesa y prueba tu suerte en este
+                            clásico juego de cartas hoy mismo!</p>
+
+                            <a href="https://suspirabansus.github.io/JUEGOs/"> <img src="images/mesa.png" alt="mesa"></a>
+
+                    </div>
+                    
+                    <div id="formulario">
+                        <h2>Solicita informacion si no comprencio el Blackjack</h2>
+
+                        <form action="datos.php" method="POST">
+                            <label for="suNombre">Nombre:</label>
+                            <input type="text" name="nombre" id="suNombre">
+
+                            <label for="Apellido">apellido:</label>
+                            <input type="text" name="nombre" id="suApellido">
+
+                            <label for="suEmail">Email:</label>
+                            <input type="email" name="email" id="suEmail">
+
+                            <input type="submit" value="Enviar solicitud">
+                        </form>
+                        <small>* nunca compartimos tu informacion personal con terceros. Revisa nuestra <a href="#"
+                                target="_blank">Politica de privacidad</a></small>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="seccionDos" class="container">
+                    <div class="col">
+                        <a href="https://www.dices.tv/es"><i class="fa-solid fa-calendar-days"></i></a> 
+                        <h3>aprende a jugar Blackjack</h3>
+                    </div>
+                    <div class="col">
+                         <a href="https://templodeslots.es/guia-blackjack"><i class="fa-solid fa-earth-americas"></i></a>
+                        <h3>Aprende de expertos </h3>
+                    </div>
+                    <div class="col">
+                        <a href="http://www.cs.toronto.edu/~rntoro/intro/18/black_jack.pdf"><i class="fa-solid fa-users"></i></a>
+                        <h3>aprende en cursos especializados </h3>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.youtube.com/watch?v=IhnOpwOMHgk"><i class="fa-solid fa-graduation-cap"></i></a>
+                        <h3>Obten orientacion 24/7</h3>
+
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="seccionTres" class="container">
+                    <div>
+                        <h2>Aprende de temarios especialisados para la comprencion del Blackjack</h2>
+                        <p>Descripción detallada de las reglas básicas del juego. <br>
+                            Explicación de las reglas de la casa y las variaciones comunes en diferentes casinos.</p>
+
+                        <a href="images/Reglamento Black Jack.pdf">Descargar temario</a>
+                    </div>
+
+                    <video width="440px" loop="true" controls autoplay>
+                        <source src="images/pobre.mp4" type="video/mp4">
+                        <source src="images/pobre.ogg" type="video/ogg">
+                        <source src="images/pobre.webm" type="video/webm">
+
+                        <p>su navegador no soporta este formato de video</p>
+                      </video>
+                    
+                    <!-- <video controls autoplay>
+                        <source src="images/pobre.mp4" type="video/mp4">
+                        <source src="images/pobre.ogg" type="video/ogg">
+                        <source src="images/pobre.webm" type="video/webm">
+
+                        <p>su navegador no soporta este formato de video</p>
+                    </video> -->
+
+                </div>
+            </section>
+            <section>
+                <h2>Conoce nuestro staff de instructores</h2>
+
+                <div id="seccionCuatro" class="container">
+
+                    <div class="card">
+                        <img src="images/negro.jpg" alt="imagen del rostro de una persona">
+                        <h3>Carld </h3>
+                        <p>jugador profecional de Blackjack</p>
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div class="card">
+                        <img src="images/mujer.jpg" alt="imagen del rostro de una persona">
+                        <h3>Vanessa </h3>
+                        <p>administradora del casino onlline</p>
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div class="card">
+                        <img src="images/barco.jpg" alt="imagen del rostro de una persona">
+                        <h3>Luis </h3>
+                        <p>Profesor de Blackjack</p>
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <div class="card">
+                        <img src="images/mujerb.jpg" alt="imagen del rostro de una persona">
+                        <h3>Belen</h3>
+                        <p>profesora de Blackjack</p>
+                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="seccionCinco" class="container">
+                    <h2>¿Deseas mas informacion?</h2>
+                    <p>Rellena nuestro formulario de solicitud de informacion y nos pondremos en contacto contigo</p>
+                    <a href="#">solicitar informacion ahora</a>
+
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer>
+        <div id="pie de pagina" class="container">
+            <ul class="nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Cursos</a></li>
+                <li><a href="#">politica de privacidad</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="copyright">
+                <small>&copy Derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

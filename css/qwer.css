@@ -1,0 +1,82 @@
+body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            
+            background-color: #009688;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        #game-container {
+            background-color: #fff;
+            background-image: url(../images/fondo.jpg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            animation: fadeIn 0.5s ease-out;
+            
+            background-size: cover;
+	        
+
+        }
+
+        
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 28px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .card {
+            width: 100px;
+            height: 150px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+        .img{
+            border-radius: 60px;
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+
+        }
